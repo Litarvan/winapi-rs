@@ -1,4 +1,4 @@
-// Copyright © 2015-2017 winapi-rs developers
+// Copyright © 2015-2018 winapi-rs developers
 // Licensed under the Apache License, Version 2.0
 // <LICENSE-APACHE or http://www.apache.org/licenses/LICENSE-2.0> or the MIT license
 // <LICENSE-MIT or http://opensource.org/licenses/MIT>, at your option.
@@ -8,6 +8,7 @@
 use shared::basetsd::UINT32;
 use shared::minwindef::{BOOL, DWORD, HRGN, LPCVOID, LPVOID, UINT};
 use shared::windef::HWND;
+use um::uxtheme::MARGINS;
 use um::winnt::{HRESULT, ULONGLONG};
 pub type DWM_FRAME_COUNT = ULONGLONG;
 pub type QPC_TIME = ULONGLONG;
@@ -87,7 +88,10 @@ extern "system" {
     ) -> HRESULT;
     // pub fn DwmEnableComposition();
     // pub fn DwmEnableMMCSS();
-    // pub fn DwmExtendFrameIntoClientArea();
+    pub fn DwmExtendFrameIntoClientArea(
+        hWnd: HWND,
+        margins: *const MARGINS
+    ) -> HRESULT;
     // pub fn DwmGetColorizationColor();
     pub fn DwmGetCompositionTimingInfo(
         hWnd: HWND,

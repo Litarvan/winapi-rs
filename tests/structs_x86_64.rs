@@ -5507,6 +5507,12 @@ fn um_usp10() {
     assert_eq!(size_of::<SCRIPT_GLYPHPROP>(), 4);
     assert_eq!(align_of::<SCRIPT_GLYPHPROP>(), 2);
 }
+#[cfg(feature = "uxtheme")] #[test]
+fn um_uxtheme() {
+    use winapi::um::uxtheme::*;
+    assert_eq!(size_of::<MARGINS>(), 16);
+    assert_eq!(align_of::<MARGINS>(), 4);
+}
 #[cfg(feature = "vsbackup")] #[test]
 fn um_vsbackup() {
     use winapi::um::vsbackup::*;
